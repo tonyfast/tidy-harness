@@ -1,0 +1,21 @@
+# From root:
+#
+# watchmedo tricks tricks.yaml
+
+tricks:
+- watchdog.tricks.ShellCommandTrick:
+    patterns:
+    - "**/README.ipynb"
+    - "**/**/README.ipynb"
+    shell_command: |
+        jupyter nbconvert --to markdown "${watch_src_path}"
+# Don't watch the root level files.
+- watchdog.tricks.ShellCommandTrick:
+    patterns:
+    - "./harness/*.ipynb"
+    - "./harness/**/*.ipynb"
+    ignore_patterns:
+        - '*/.~*.ipynb'
+        - '*/.ipynb_checkpoints*'
+    shell_command: |
+        jupyter nbconvert --to python "${watch_src_path}"
