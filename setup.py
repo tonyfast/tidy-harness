@@ -39,10 +39,10 @@ setuptools.setup(
         "Topic :: Software Development :: Testing",
     ],
     install_requires=[
-        "sklearn", "pandas", "jinja2", "bokeh"
+#         "sklearn", "pandas", "jinja2", "bokeh"
     ],
     tests_require=[
-        'pytest', 'pytest-ipynb'
+#         'pytest', 'pytest-ipynb'
     ],
 )
 
