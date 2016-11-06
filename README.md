@@ -106,37 +106,6 @@ jupyter nbconvert tests/*.ipynb --execute --to notebook --inplace
 py.test
 ```
 
-    ============================= test session starts ==============================
-    platform darwin -- Python 3.5.2, pytest-2.9.2, py-1.4.31, pluggy-0.3.1
-    rootdir: /Users/tonyfast/tidy-harness, inifile: 
-    plugins: hypothesis-3.5.3, flake8-0.7, ipynb-1.1.0
-    collected 40 items
-    
-    tests/test Can Harness Add a Networkx extension.ipynb ........
-    tests/test Does Harness Write Declarative Model Pipelines.ipynb .............
-    tests/test Does Harness work for the iris dataset emoji style.ipynb ..........
-    tests/test Does Harness work for the iris dataset.ipynb .........
-    
-    ========================== 40 passed in 20.81 seconds ==========================
-
-
-    [NbConvertApp] Converting notebook tests/What are the UML diagrams.ipynb to notebook
-    [NbConvertApp] Executing notebook with kernel: python3
-    [NbConvertApp] Writing 278936 bytes to tests/What are the UML diagrams.ipynb
-    [NbConvertApp] Converting notebook tests/test Can Harness Add a Networkx extension.ipynb to notebook
-    [NbConvertApp] Executing notebook with kernel: python3
-    [NbConvertApp] Writing 40306 bytes to tests/test Can Harness Add a Networkx extension.ipynb
-    [NbConvertApp] Converting notebook tests/test Does Harness Write Declarative Model Pipelines.ipynb to notebook
-    [NbConvertApp] Executing notebook with kernel: python3
-    [NbConvertApp] Writing 18413 bytes to tests/test Does Harness Write Declarative Model Pipelines.ipynb
-    [NbConvertApp] Converting notebook tests/test Does Harness work for the iris dataset emoji style.ipynb to notebook
-    [NbConvertApp] Executing notebook with kernel: python3
-    [NbConvertApp] Writing 14266 bytes to tests/test Does Harness work for the iris dataset emoji style.ipynb
-    [NbConvertApp] Converting notebook tests/test Does Harness work for the iris dataset.ipynb to notebook
-    [NbConvertApp] Executing notebook with kernel: python3
-    [NbConvertApp] Writing 13532 bytes to tests/test Does Harness work for the iris dataset.ipynb
-
-
 
 ```python
 
