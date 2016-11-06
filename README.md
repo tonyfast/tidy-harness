@@ -38,9 +38,6 @@ with transformed.reset_index().DataSource(x=0, y=1) as source:
     source.show()
 ```
 
-    Object `model_selection.ShuffleSplit` not found.
-
-
 ## Background
 
 `harness` initially responded to the need for `scikit-learn` models closer to a `pandas.DataFrame`.  Since a DataFrame is __[Tidy Data](http://vita.had.co.nz/papers/tidy-data.pdf)__ the rows and columns can assist in tracking samples and features over many estimations.
