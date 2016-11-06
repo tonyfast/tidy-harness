@@ -14,11 +14,6 @@ import pandas, sklearn.model_selection as model_selection
 from toolz.curried import first
 
 
-# In[11]:
-
-get_ipython().magic('pinfo2 model_selection.ShuffleSplit')
-
-
 # In[10]:
 
 class SciKitExtension(HarnessExtension):
