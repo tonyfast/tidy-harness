@@ -83,7 +83,7 @@ python setup.py develop
 watchmedo tricks tricks.yaml
 ```
 
-    Starting job # 5 in a separate thread.
+    Starting job # 8 in a separate thread.
 
 
 
@@ -105,6 +105,41 @@ The tests require `pytest` and `pytest-ipynb`.
 jupyter nbconvert tests/*.ipynb --execute --to notebook --inplace 
 py.test
 ```
+
+    ============================= test session starts ==============================
+    platform darwin -- Python 3.5.2, pytest-2.9.2, py-1.4.31, pluggy-0.3.1
+    rootdir: /Users/tonyfast/tidy-harness, inifile: 
+    plugins: hypothesis-3.5.3, flake8-0.7, ipynb-1.1.0
+    collected 51 items
+    
+    tests/test Can Harness Add a Networkx extension.ipynb ..........
+    tests/test Can Harness apply to live data.ipynb .........
+    tests/test Does Harness Write Declarative Model Pipelines.ipynb .............
+    tests/test Does Harness work for the iris dataset emoji style.ipynb ..........
+    tests/test Does Harness work for the iris dataset.ipynb .........
+    
+    ========================== 51 passed in 21.07 seconds ==========================
+
+
+    [NbConvertApp] Converting notebook tests/What are the UML diagrams.ipynb to notebook
+    [NbConvertApp] Executing notebook with kernel: python3
+    [NbConvertApp] Writing 280002 bytes to tests/What are the UML diagrams.ipynb
+    [NbConvertApp] Converting notebook tests/test Can Harness Add a Networkx extension.ipynb to notebook
+    [NbConvertApp] Executing notebook with kernel: python3
+    [NbConvertApp] Writing 46472 bytes to tests/test Can Harness Add a Networkx extension.ipynb
+    [NbConvertApp] Converting notebook tests/test Can Harness apply to live data.ipynb to notebook
+    [NbConvertApp] Executing notebook with kernel: python3
+    [NbConvertApp] Writing 52908 bytes to tests/test Can Harness apply to live data.ipynb
+    [NbConvertApp] Converting notebook tests/test Does Harness Write Declarative Model Pipelines.ipynb to notebook
+    [NbConvertApp] Executing notebook with kernel: python3
+    [NbConvertApp] Writing 18212 bytes to tests/test Does Harness Write Declarative Model Pipelines.ipynb
+    [NbConvertApp] Converting notebook tests/test Does Harness work for the iris dataset emoji style.ipynb to notebook
+    [NbConvertApp] Executing notebook with kernel: python3
+    [NbConvertApp] Writing 14115 bytes to tests/test Does Harness work for the iris dataset emoji style.ipynb
+    [NbConvertApp] Converting notebook tests/test Does Harness work for the iris dataset.ipynb to notebook
+    [NbConvertApp] Executing notebook with kernel: python3
+    [NbConvertApp] Writing 13451 bytes to tests/test Does Harness work for the iris dataset.ipynb
+
 
 
 ```python

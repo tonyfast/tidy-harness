@@ -92,7 +92,7 @@ class BokehPlottingExtension(BokehExtension):
     imports = 'bokeh.plotting'
     def keywords(self, dataframe):
         return {
-            'data': partial(dataframe.pipe, self._to_source),
+            'source': partial(last, dataframe.sources),
             'obj': partial(last, dataframe.figures),
             **pipe(
                 last(dataframe.sources).column_names 
@@ -130,7 +130,7 @@ class BokehModelsExtension(BokehExtension):
     
     def keywords(self, dataframe):
         return {
-            'data_source': partial(identity, dataframe),
+            'data': partial(identity, dataframe),
             **pipe(
                 last(dataframe.sources).column_names 
                 if dataframe.sources

@@ -163,6 +163,11 @@ class HarnessMixins(DataFrameEstimatorMixin):
         return self.index.get_level_values
 
 
+# In[2]:
+
+import bokeh.charts
+
+
 # In[6]:
 
 class Harness(HarnessMixins):
