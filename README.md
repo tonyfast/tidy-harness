@@ -18,7 +18,8 @@ iris = datasets.load_iris()
 df = Harness(
     data=iris['data'], index=Categorical(iris['target']),
     estimator=discriminant_analysis.LinearDiscriminantAnalysis(),
-    feature_level=-1,
+    feature_level=-1, # the feature level indicates an index 
+                      # in the dataframe. -1 is the last index.
 )
 
 # Fit the model with 50 random rows.
@@ -82,7 +83,7 @@ python setup.py develop
 watchmedo tricks tricks.yaml
 ```
 
-    Starting job # 3 in a separate thread.
+    Starting job # 4 in a separate thread.
 
 
 
