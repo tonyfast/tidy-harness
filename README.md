@@ -39,6 +39,8 @@ with transformed.reset_index().DataSource(x=0, y=1) as source:
     source.show()
 ```
 
+### More Examples
+
 More examples can be found in the [`tests`](https://github.com/tonyfast/tidy-harness/tree/master/tests) directory.  Tap the __Ⓣ key__ while in the Github interface to search quickly.
 
 ## Install
