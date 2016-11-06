@@ -49,7 +49,7 @@ pip install git+https://github.com/tonyfast/tidy-harness
 
 ## Background
 
-`harness` initially responded to the need for `scikit-learn` models closer to a `pandas.DataFrame`.  Since a DataFrame is __[Tidy Data](http://vita.had.co.nz/papers/tidy-data.pdf)__ the rows and columns can assist in tracking samples and features over many estimations.
+`harness` initially responded to the need for `scikit-learn` models closer to a `pandas.DataFrame`.  Since a DataFrame is __[Tidy Data](http://vita.had.co.nz/papers/tidy-data.pdf)__ the rows and columns can assist in tracking samples and features over many estimations.  With this knowledge it would be easier to design a testing harness for data science.
 
 The `DataFrame` has a powerful declarative syntax, consider the `groupby` and `rolling` apis.  There is a modern tendency toward declarative and functional syntaxes in scientific computing and visualization.  This is observed in [altair](https://github.com/altair-viz/altair), dask, and scikit-learn.
 
@@ -83,7 +83,7 @@ python setup.py develop
 watchmedo tricks tricks.yaml
 ```
 
-    Starting job # 4 in a separate thread.
+    Starting job # 5 in a separate thread.
 
 
 
