@@ -74,8 +74,10 @@ class AttributeObject(sklearn.base.BaseEstimator):
         try:
             return self.func.__doc__
         except:
-            return self.func.__repr__()
-    
+            return """
+            The method {} can accept {} as key arguments.
+            """.format(self.func, self.arguments)
+        
     def __getattribute__(self, attr):
         """Allow additional attributes to be accessed."""
         try:

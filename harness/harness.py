@@ -134,12 +134,6 @@ class HarnessMixins(DataFrameEstimatorMixin):
         super().__getattribute__(
             first(self._get_param_names())
         )
-        
-        aliased = [e for e in self.env.extensions.values() if e.alias == attr]
-        
-        if aliased:
-            return self.env.pipes(attr, extensions=[e])
-            
 
         # If it ain't a dataframe thing then 
         # try each of the extensions.

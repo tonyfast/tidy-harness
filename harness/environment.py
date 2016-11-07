@@ -17,11 +17,11 @@ __all__ = ['HarnessEnvironment']
 # In[119]:
 
 class HarnessEnvironment(jinja2.Environment):
-    def pipes(self, dataframe, attr, extensions=None):
+    def pipes(self, dataframe, attr):
         if callable(attr):
             return AttributeObject(attr)
             
-        for ext in dataframe.extensions if extensions is None else extensions:
+        for ext in dataframe.extensions:
             value = dataframe.pipe(self.extensions[ext].pipe, attr)
             if not(value is None): return value
 
