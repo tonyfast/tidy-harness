@@ -17,6 +17,7 @@ __all__ = ['HarnessEnvironment']
 # In[119]:
 
 class HarnessEnvironment(jinja2.Environment):
+    """A jinja environment as the interface to extend the dataframe."""
     def pipes(self, dataframe, attr):
         if callable(attr):
             return AttributeObject(attr)

@@ -3,12 +3,6 @@
 
 # In[1]:
 
-# !jupyter nbconvert --to script *.ipynb **/*.ipynb
-
-
-# In[3]:
-
-
 try:
     from .environment import HarnessEnvironment
     from .base import AttributeObject
@@ -30,27 +24,13 @@ from toolz.curried import (
 __all__ = ['Harness']
 
 
-# A normal output may look like.
-# 
-# The normal `sklearn` model has a `__repr__` like:
-# 
-# ```
-# <bound method LinearDiscriminantAnalysis.fit of LinearDiscriminantAnalysis(n_components=None, priors=None, shrinkage=None,
-#               solver='svd', store_covariance=False, tol=0.0001)>
-# ```
-# 
-# In most circumstances, a scientist may be curious how to use a function.  The `AttributeObject` method changes:
-# 
-# * `__repr__` to show the docstring in the output.
-# * `__doc__` will by dynamic for any function. 
-# * `__call__` will introspect a function for keywords argument `keys` then inject these values into the function call.  Any argument or keyword value that is a callable is called with not arguments allowing lazy evaluation.
-
-# In[4]:
+# In[2]:
 
 class DataFrameEstimatorMixin(pandas.DataFrame, sklearn.base.BaseEstimator):
     """Combine a DataFrame and BaseEstimator.  def __init__ must start
     with the DataFrame keyword spec."""
     _series = pandas.Series
+    _blacklist = []
 
     def __dir__(self):
         return concatv(super().__dir__(), self._metadata)
@@ -74,6 +54,16 @@ class DataFrameEstimatorMixin(pandas.DataFrame, sklearn.base.BaseEstimator):
     def __dir__(self):
         return concatv(super().__dir__(), list(self.get_params()))
     
+    def __finalize__(self, other=None, method=None,):
+        """__finalize__ must be at the __class__ level."""
+
+        if method == 'merge': other = other.left
+        if method == 'concat': other = other.objs[0]
+
+        self.set_params(**other.get_params(deep=False))
+
+        return self
+    
     def set_params(self, **kwargs):
         params = []
         try:
@@ -86,39 +76,24 @@ class DataFrameEstimatorMixin(pandas.DataFrame, sklearn.base.BaseEstimator):
             else:
                 super().set_params(**{key: value})
         return self
-    
+
+    @classmethod
+    def _get_param_names(cls):
+        """Ignore the parameters that are specific to the dataframe."""
+        return pipe(
+            super()._get_param_names(), filter(
+                complement(partial(operator.contains, cls._blacklist))
+            ), list
+        )
 
 
-# In[5]:
+# In[3]:
 
-class HarnessMixins(DataFrameEstimatorMixin):    
+class HarnessBase(DataFrameEstimatorMixin):
     @property
     def column_names(self):
         """Include the index names in the column names."""
         return tuple(concatv(self.index.names, self.columns))
-
-    def pipes(self, function_or_attribute):
-        """Do a thing with a dataframe."""
-        df = self
-        
-        if callable(function_or_attribute):
-            return AttributeObject(
-                function_or_attribute, 
-            )
-        
-        # Try each of the extensions in order.
-        for ext in self.extensions:
-            ext = self.env.extensions[ext]
-            try:
-                result = df.pipe(ext.pipe, function_or_attribute)
-                if result is None:
-                    continue
-                if isinstance(result, pandas.DataFrame):
-                    result = result.pipe(df.__finalize__)
-                return result
-            except (AttributeError, KeyError): pass
-            
-        raise AttributeError("""There is an error.""")
 
     def __getattr__(self, attr):
         # Try to do the dataframe things first.
@@ -151,20 +126,17 @@ class HarnessMixins(DataFrameEstimatorMixin):
                 )
             )
         )
-
+    def do(self, func, *args, **kwargs):
+        return self.pipe(do(func), *args, **kwargs)
+    
     @property
     def Index(self):
         return self.index.get_level_values
 
 
-# In[2]:
+# In[5]:
 
-import bokeh.charts
-
-
-# In[6]:
-
-class Harness(HarnessMixins):
+class Harness(HarnessBase):
     
     # Make ScikitLearn ignore some stuff
     _blacklist = ['data', 'index', 'columns', 'copy']
@@ -219,33 +191,4 @@ class Harness(HarnessMixins):
         )
         
         super().__init__(**kwargs)
-
-    def __finalize__(self, other=None, method=None,):
-        """__finalize__ must be at the __class__ level."""
-
-        if method == 'merge': other = other.left
-        if method == 'concat': other = other.objs[0]
-
-        self.set_params(**other.get_params(deep=False))
-
-        return self
-
-    @classmethod
-    def _get_param_names(cls):
-        """Ignore the parameters that are specific to the dataframe."""
-        return pipe(
-            super()._get_param_names(), filter(
-                complement(partial(operator.contains, cls._blacklist))
-            ), list
-
-
-        )
-    
-    def do(self, func, *args, **kwargs):
-        return self.pipe(do(func), *args, **kwargs)
-
-
-# In[ ]:
-
-
 
