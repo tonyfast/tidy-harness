@@ -22,7 +22,7 @@ import abc,  builtins, collections, contextlib, inspect, jinja2, operator, panda
 np = pandas.np
 
 from toolz.curried import (
-    complement, compose, concat, concatv, do, excepts, filter, 
+    complement, compose, concat, concatv, do, filter, 
     first, get, identity, itemmap, juxt, keyfilter, last, map, 
     merge, partial, pipe, valfilter, valmap
 )
