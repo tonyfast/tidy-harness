@@ -71,7 +71,10 @@ class AttributeObject(sklearn.base.BaseEstimator):
     
     def __repr__(self):
         """A custom repr."""
-        return self.func.__doc__
+        try:
+            return self.func.__doc__
+        except:
+            return self.func.__repr__()
     
     def __getattribute__(self, attr):
         """Allow additional attributes to be accessed."""

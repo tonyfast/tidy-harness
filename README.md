@@ -8,7 +8,7 @@ A _tidy_ `pandas.DataFrame` with `scikit-learn` models, interactive `bokeh` visu
 ### Example: Modeling Fisher's 🌸 Data
 
 
-```python
+```
 from harness import Harness
 from pandas import Categorical
 from sklearn import datasets, discriminant_analysis
@@ -81,17 +81,17 @@ The script below:
 * Listens for file systems events to convert notebooks to `python` scripts.
 
 
-```python
+```
 %%script bash --bg
 python setup.py develop
 watchmedo tricks tricks.yaml
 ```
 
-    Starting job # 8 in a separate thread.
+    Starting job # 0 in a separate thread.
 
 
 
-```python
+```
 # Execute this cell to stop watching the files
 %killbgscripts
 ```
@@ -104,7 +104,7 @@ watchmedo tricks tricks.yaml
 The tests require `pytest` and `pytest-ipynb`.
 
 
-```python
+```
 %%script bash
 jupyter nbconvert tests/*.ipynb --execute --to notebook --inplace 
 py.test
@@ -146,6 +146,6 @@ py.test
 
 
 
-```python
+```
 
 ```
