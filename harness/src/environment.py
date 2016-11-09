@@ -6,9 +6,9 @@
 # In[3]:
 
 try: 
-    from .base import AttributeObject
+    from .base import AttributeObject 
 except:
-    from base import AttributeObject
+    from src.base import AttributeObject
 
 import jinja2.ext
 __all__ = ['HarnessEnvironment']

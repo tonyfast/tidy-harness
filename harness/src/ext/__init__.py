@@ -1,12 +1,11 @@
 
 # coding: utf-8
 
-# In[ ]:
+# In[3]:
 
 try:
     from .base import HarnessExtension
-
 except:
-    from base import HarnessExtension
+    from harness.src.ext.base import HarnessExtension
 __all__ = ['HarnessExtension']
 

@@ -4,18 +4,35 @@
 
 tricks:
 - watchdog.tricks.ShellCommandTrick:
-    patterns:
-    - "**/README.ipynb"
-    - "**/**/README.ipynb"
+    patterns: ['*/README.ipynb']
     shell_command: |
         jupyter nbconvert --to markdown "${watch_src_path}"
-# Don't watch the root level files.
+
 - watchdog.tricks.ShellCommandTrick:
     patterns:
-    - "./harness/*.ipynb"
-    - "./harness/**/*.ipynb"
+    - ./harness/*.ipynb
+    ignore_patterns:
+        - ./harness/**/*.ipynb
+        - '*/.~*.ipynb'
+        - '*/.ipynb_checkpoints/*'
+    shell_command: |
+        jupyter nbconvert --to python --output-dir harness/src/ "${watch_src_path}"
+        
+- watchdog.tricks.ShellCommandTrick:
+    patterns:
+    - ./harness/ext/*.ipynb
     ignore_patterns:
         - '*/.~*.ipynb'
-        - '*/.ipynb_checkpoints*'
+        - '*/.ipynb_checkpoints/*'
     shell_command: |
-        jupyter nbconvert --to python "${watch_src_path}"
+        jupyter nbconvert --to python --output-dir harness/src/ext/ "${watch_src_path}"
+        
+- watchdog.tricks.ShellCommandTrick:
+    patterns:
+    - ./harness/tests/*.ipynb
+    ignore_patterns:
+        - ./harness/tests/* *.ipynb
+        - '*/.~*.ipynb'
+        - '*/.ipynb_checkpoints/*'
+    shell_command: |
+        jupyter nbconvert --to python --output-dir harness/src/tests/ "${watch_src_path}"

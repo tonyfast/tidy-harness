@@ -1,4 +1,14 @@
-from harness.ext import HarnessExtension
+
+# coding: utf-8
+
+# In[1]:
+
+from harness import Harness
+import pandas
+from harness.src.ext import HarnessExtension
+
+
+# In[2]:
 
 class NetworkXMixin:
     graph = None
@@ -30,3 +40,4 @@ class NetworkXExtension(HarnessExtension):
     def nodes(self, df):
         return df.graph.nodes()
         
+

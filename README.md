@@ -9,6 +9,11 @@ A _tidy_ `pandas.DataFrame` with `scikit-learn` models, interactive `bokeh` visu
 
 
 ```python
+import harness
+```
+
+
+```python
 from harness import Harness
 from pandas import Categorical
 from sklearn import datasets, discriminant_analysis
@@ -87,7 +92,7 @@ python setup.py develop
 watchmedo tricks tricks.yaml
 ```
 
-    Starting job # 4 in a separate thread.
+    Starting job # 2 in a separate thread.
 
 
 
@@ -106,7 +111,7 @@ The tests require `pytest` and `pytest-ipynb`.
 
 ```python
 %%script bash
-jupyter nbconvert tests/*.ipynb --execute --to notebook --inplace 
+jupyter nbconvert harness/tests/*.ipynb --execute --to notebook --inplace 
 py.test
 ```
 
@@ -116,37 +121,40 @@ py.test
     plugins: hypothesis-3.5.3, flake8-0.7, ipynb-1.1.0
     collected 62 items
     
-    tests/test Can Harness Add a Networkx extension.ipynb ..........
-    tests/test Can Harness apply to live data.ipynb .........
-    tests/test Do the reprs work.ipynb ..........
-    tests/test Does Harness Write Declarative Model Pipelines.ipynb .............
-    tests/test Does Harness work for the iris dataset emoji style.ipynb ...........
-    tests/test Does Harness work for the iris dataset.ipynb .........
+    harness/tests/test Can Harness Add a Networkx extension.ipynb ..........
+    harness/tests/test Can Harness apply to live data.ipynb .........
+    harness/tests/test Do the reprs work.ipynb ..........
+    harness/tests/test Does Harness Write Declarative Model Pipelines.ipynb .............
+    harness/tests/test Does Harness work for the iris dataset emoji style.ipynb ...........
+    harness/tests/test Does Harness work for the iris dataset.ipynb .........
     
-    ========================== 62 passed in 28.30 seconds ==========================
+    ========================== 62 passed in 23.30 seconds ==========================
 
 
-    [NbConvertApp] Converting notebook tests/What are the UML diagrams.ipynb to notebook
+    [NbConvertApp] Converting notebook harness/tests/NetworkX.ipynb to notebook
     [NbConvertApp] Executing notebook with kernel: python3
-    [NbConvertApp] Writing 286588 bytes to tests/What are the UML diagrams.ipynb
-    [NbConvertApp] Converting notebook tests/test Can Harness Add a Networkx extension.ipynb to notebook
+    [NbConvertApp] Writing 1895 bytes to harness/tests/NetworkX.ipynb
+    [NbConvertApp] Converting notebook harness/tests/What are the UML diagrams.ipynb to notebook
     [NbConvertApp] Executing notebook with kernel: python3
-    [NbConvertApp] Writing 38985 bytes to tests/test Can Harness Add a Networkx extension.ipynb
-    [NbConvertApp] Converting notebook tests/test Can Harness apply to live data.ipynb to notebook
+    [NbConvertApp] Writing 307482 bytes to harness/tests/What are the UML diagrams.ipynb
+    [NbConvertApp] Converting notebook harness/tests/test Can Harness Add a Networkx extension.ipynb to notebook
     [NbConvertApp] Executing notebook with kernel: python3
-    [NbConvertApp] Writing 49500 bytes to tests/test Can Harness apply to live data.ipynb
-    [NbConvertApp] Converting notebook tests/test Do the reprs work.ipynb to notebook
+    [NbConvertApp] Writing 48180 bytes to harness/tests/test Can Harness Add a Networkx extension.ipynb
+    [NbConvertApp] Converting notebook harness/tests/test Can Harness apply to live data.ipynb to notebook
     [NbConvertApp] Executing notebook with kernel: python3
-    [NbConvertApp] Writing 8806 bytes to tests/test Do the reprs work.ipynb
-    [NbConvertApp] Converting notebook tests/test Does Harness Write Declarative Model Pipelines.ipynb to notebook
+    [NbConvertApp] Writing 64810 bytes to harness/tests/test Can Harness apply to live data.ipynb
+    [NbConvertApp] Converting notebook harness/tests/test Do the reprs work.ipynb to notebook
     [NbConvertApp] Executing notebook with kernel: python3
-    [NbConvertApp] Writing 18253 bytes to tests/test Does Harness Write Declarative Model Pipelines.ipynb
-    [NbConvertApp] Converting notebook tests/test Does Harness work for the iris dataset emoji style.ipynb to notebook
+    [NbConvertApp] Writing 8806 bytes to harness/tests/test Do the reprs work.ipynb
+    [NbConvertApp] Converting notebook harness/tests/test Does Harness Write Declarative Model Pipelines.ipynb to notebook
     [NbConvertApp] Executing notebook with kernel: python3
-    [NbConvertApp] Writing 14187 bytes to tests/test Does Harness work for the iris dataset emoji style.ipynb
-    [NbConvertApp] Converting notebook tests/test Does Harness work for the iris dataset.ipynb to notebook
+    [NbConvertApp] Writing 18111 bytes to harness/tests/test Does Harness Write Declarative Model Pipelines.ipynb
+    [NbConvertApp] Converting notebook harness/tests/test Does Harness work for the iris dataset emoji style.ipynb to notebook
     [NbConvertApp] Executing notebook with kernel: python3
-    [NbConvertApp] Writing 13286 bytes to tests/test Does Harness work for the iris dataset.ipynb
+    [NbConvertApp] Writing 14242 bytes to harness/tests/test Does Harness work for the iris dataset emoji style.ipynb
+    [NbConvertApp] Converting notebook harness/tests/test Does Harness work for the iris dataset.ipynb to notebook
+    [NbConvertApp] Executing notebook with kernel: python3
+    [NbConvertApp] Writing 13370 bytes to harness/tests/test Does Harness work for the iris dataset.ipynb
 
 
 

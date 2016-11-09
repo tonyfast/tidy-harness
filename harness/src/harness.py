@@ -7,8 +7,8 @@ try:
     from .environment import HarnessEnvironment
     from .base import AttributeObject
 except SystemError:
-    from environment import HarnessEnvironment
-    from base import AttributeObject
+    from src.environment import HarnessEnvironment
+    from src.base import AttributeObject
     
 import abc,  builtins, collections, contextlib, inspect, jinja2, operator, pandas,     sklearn.base, time, toolz.curried, typing
 
@@ -103,7 +103,6 @@ class HarnessBase(DataFrameEstimatorMixin):
                 value = value.pipe(self.__class__)
             return value
         except AttributeError as e:
-            pandas_error = e
             pass
                     
         super().__getattribute__(
@@ -112,10 +111,13 @@ class HarnessBase(DataFrameEstimatorMixin):
 
         # If it ain't a dataframe thing then 
         # try each of the extensions.
-        try:
-            return self.pipe(self.env.pipes, attr)
-        except:
-            return super().__getattr__(attr)
+        if not attr.startswith('_'):
+            try:
+                return self.pipe(self.env.pipes, attr)
+            except:
+                pass
+            
+        return super().__getattr__(attr)
     
     def __dir__(self):
         """Extend the completer."""
@@ -155,11 +157,11 @@ class Harness(HarnessBase):
         parent=None, feature_level=None,
         copy=False,
         extensions=[
-            'harness.ext.base.JinjaExtension',
-            'harness.ext.SciKit.SciKitExtension', 
-            'harness.ext.Bokeh.BokehModelsExtension',     
-            'harness.ext.Bokeh.BokehPlottingExtension',
-            'harness.ext.Bokeh.BokehChartsExtension'
+            'harness.src.ext.base.JinjaExtension',
+            'harness.src.ext.SciKit.SciKitExtension', 
+            'harness.src.ext.Bokeh.BokehModelsExtension',     
+            'harness.src.ext.Bokeh.BokehPlottingExtension',
+            'harness.src.ext.Bokeh.BokehChartsExtension'
         ],
     ):
         kwargs = dict(
