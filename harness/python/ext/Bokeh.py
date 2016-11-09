@@ -6,7 +6,7 @@
 try:
     from .base import HarnessExtension
 except:
-    from harness.src.base import HarnessExtension
+    from harness.python.base import HarnessExtension
 
 from toolz.curried import *
 import bokeh.charts, bokeh.plotting, contextlib, pandas

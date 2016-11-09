@@ -16,7 +16,7 @@ tricks:
         - '*/.~*.ipynb'
         - '*/.ipynb_checkpoints/*'
     shell_command: |
-        jupyter nbconvert --to python --output-dir harness/src/ "${watch_src_path}"
+        jupyter nbconvert --to python --output-dir harness/python/ "${watch_src_path}"
         
 - watchdog.tricks.ShellCommandTrick:
     patterns:
@@ -25,7 +25,7 @@ tricks:
         - '*/.~*.ipynb'
         - '*/.ipynb_checkpoints/*'
     shell_command: |
-        jupyter nbconvert --to python --output-dir harness/src/ext/ "${watch_src_path}"
+        jupyter nbconvert --to python --output-dir harness/python/ext/ "${watch_src_path}"
         
 - watchdog.tricks.ShellCommandTrick:
     patterns:
@@ -35,4 +35,4 @@ tricks:
         - '*/.~*.ipynb'
         - '*/.ipynb_checkpoints/*'
     shell_command: |
-        jupyter nbconvert --to python --output-dir harness/src/tests/ "${watch_src_path}"
+        jupyter nbconvert --to python --output-dir harness/python/tests/ "${watch_src_path}"

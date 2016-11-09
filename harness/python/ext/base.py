@@ -6,7 +6,7 @@
 try:
     from ..base import AttributeObject
 except:
-    from harness.src.base import AttributeObject
+    from harness.python.base import AttributeObject
 
 from toolz.curried import *
 import importlib, inspect, jinja2.ext

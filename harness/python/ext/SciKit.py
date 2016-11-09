@@ -8,7 +8,7 @@
 try:
     from .base import HarnessExtension
 except:
-    from harness.src.base import HarnessExtension
+    from harness.python.base import HarnessExtension
 
 import pandas, sklearn.model_selection as model_selection
 from toolz.curried import first

@@ -7,8 +7,8 @@ try:
     from .environment import HarnessEnvironment
     from .base import AttributeObject
 except SystemError:
-    from src.environment import HarnessEnvironment
-    from src.base import AttributeObject
+    from python.environment import HarnessEnvironment
+    from python.base import AttributeObject
     
 import abc,  builtins, collections, contextlib, inspect, jinja2, operator, pandas,     sklearn.base, time, toolz.curried, typing
 
@@ -157,11 +157,11 @@ class Harness(HarnessBase):
         parent=None, feature_level=None,
         copy=False,
         extensions=[
-            'harness.src.ext.base.JinjaExtension',
-            'harness.src.ext.SciKit.SciKitExtension', 
-            'harness.src.ext.Bokeh.BokehModelsExtension',     
-            'harness.src.ext.Bokeh.BokehPlottingExtension',
-            'harness.src.ext.Bokeh.BokehChartsExtension'
+            'harness.python.ext.base.JinjaExtension',
+            'harness.python.ext.SciKit.SciKitExtension', 
+            'harness.python.ext.Bokeh.BokehModelsExtension',     
+            'harness.python.ext.Bokeh.BokehPlottingExtension',
+            'harness.python.ext.Bokeh.BokehChartsExtension'
         ],
     ):
         kwargs = dict(

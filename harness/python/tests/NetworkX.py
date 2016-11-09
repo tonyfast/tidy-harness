@@ -5,7 +5,7 @@
 
 from harness import Harness
 import pandas
-from harness.src.ext import HarnessExtension
+from harness.python.ext import HarnessExtension
 
 
 # In[2]:

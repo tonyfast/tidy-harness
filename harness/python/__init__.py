@@ -6,5 +6,5 @@
 try:
     from .harness import Harness
 except SystemError:
-    from src.harness import Harness
+    from python.harness import Harness
 

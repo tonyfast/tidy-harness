@@ -8,7 +8,7 @@
 try: 
     from .base import AttributeObject 
 except:
-    from src.base import AttributeObject
+    from python.base import AttributeObject
 
 import jinja2.ext
 __all__ = ['HarnessEnvironment']

@@ -6,6 +6,6 @@
 try:
     from .base import HarnessExtension
 except:
-    from harness.src.ext.base import HarnessExtension
+    from harness.python.ext.base import HarnessExtension
 __all__ = ['HarnessExtension']
 
